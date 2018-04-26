@@ -1,0 +1,4 @@
+#!/bin/bash
+#launch firefox dev edition
+/opt/firefox/firefox
+

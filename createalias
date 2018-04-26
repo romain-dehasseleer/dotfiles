@@ -1,0 +1,3 @@
+#!/bin/bash
+cp -f firefoxdev /usr/bin/
+cp -f ideago /usr/bin/
