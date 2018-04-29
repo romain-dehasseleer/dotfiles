@@ -121,13 +121,14 @@ assign [class="xfce4-terminal"] 1
 assign [class="Code|code"] 2
 assign [class="jetbrains-idea"] 2
 assign [class="Navigator|Firefox Developer Edition|Opera"] 3
-assign [class="thunar"] 4
+assign [class="libreoffice|ristretto"] 4
 assign [class="vlc"] 5
 assign [class="thunar|Thunar"] 6
-assign [class="evince"] 7
+assign [class="evince|Evince|calibre|calibre-gui"] 7
+assign [class="transmission-gtk|Transmission-gtk"] 8
 
 exec --no-startup-id urxvt
-exec --no-startup-id feh --bg-scale ~/Images/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/Images/wallpaper_space.jpg
 exec --no-startup-id firefoxdev
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -168,12 +169,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
-
-# Touchpad controls
-#besoin de créer le script
-#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -198,3 +195,4 @@ for_window [class=".*"] title_format "  %title"
 
 # Redémarre polybar quand on redémarre i3
 exec_always --no-startup-id "killall polybar;polybar -r default"
+exec --no-startup-id "xfce4-power-manager"

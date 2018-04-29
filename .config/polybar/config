@@ -67,13 +67,17 @@ tray-padding = 2
 ;scroll-down = i3wm-wsprev
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title%
 [module/backlight]
-type = internal/backlight
+type = internal/xbacklight
 
-; Use the following command to list available cards:
-; $ ls -1 /sys/class/backlight/
-card = intel_backlight
+; XRandR output to get get values from
+; Default: the monitor defined for the running bar
+output = HDMI-1
+
+; Create scroll handlers used to set the backlight value
+; Default: true
+enable-scroll = false
 ; Available tags:
 ;   <label> (default)
 ;   <ramp>
@@ -177,9 +181,11 @@ label-urgent-padding = ${module/bspwm.label-urgent-padding}
 ws-icon-0=1;
 ws-icon-1=2;
 ws-icon-2=3;
-ws-icon-3=5;
-ws-icon-4=6;
-ws-icon-5=7;
+ws-icon-3=4;
+ws-icon-4=5;
+ws-icon-5=6;
+ws-icon-6=7;
+ws-icon-7=8;
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
@@ -195,20 +201,24 @@ label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
-
+card = intel_backlight
 format = <label> <bar>
-label = BL
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
 
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+; Only applies if <bar> is used
 bar-width = 10
 bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
 bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
 bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -235,17 +245,17 @@ label = RAM %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %essid% 
 
-format-disconnected =
+;format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
+label-disconnected = %ifname%  
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
@@ -273,7 +283,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date = "%d/%m/%y"
 date-alt = " %d"
