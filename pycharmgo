@@ -1,0 +1,3 @@
+#!/bin/bash
+#launch pycharm
+sh /media/romain/Linux/pycharm/bin/pycharm.sh

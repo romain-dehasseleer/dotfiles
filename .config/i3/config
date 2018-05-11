@@ -118,8 +118,7 @@ bindsym $mod+Shift+ccedilla move container to workspace 9
 bindsym $mod+Shift+agrave move container to workspace 10
 
 assign [class="xfce4-terminal"] 1
-assign [class="Code|code"] 2
-assign [class="jetbrains-idea"] 2
+assign [class="Code|code|jetbrains-idea|jetbrains-pycharm"] 2
 assign [class="Navigator|Firefox Developer Edition|Opera"] 3
 assign [class="libreoffice|ristretto|com.oracle.javafx.scenebuilder.app.SceneBuilderApp|com.oracle.javafx.scenebuilder.app.SceneBuilderApp"] 4
 assign [class="vlc"] 5
@@ -196,3 +195,4 @@ for_window [class=".*"] title_format "  %title"
 # Redémarre polybar quand on redémarre i3
 exec_always --no-startup-id "killall polybar;polybar -r default"
 exec --no-startup-id "xfce4-power-manager"
+exec --no-startup-id "wicd"

@@ -15,4 +15,4 @@ rofi.lines: 3
 rofi.width: 100
 rofi.padding: 200
 rofi.bw: 0
-rofi.show-icons: trueje vais pa
+rofi.show-icons: true
