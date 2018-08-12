@@ -1,7 +1,6 @@
 " =============================================================
 "                      VUNDLE
 " =============================================================
-
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -17,8 +16,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'othree/html5.vim'
+Plugin 'webastien/vim-ctags'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 call vundle#end()  
@@ -33,9 +32,9 @@ execute pathogen#infect()
 "                       STARTUP SCRIPT
 " =============================================================
 
-au VimEnter * NERDTree 
 
-
+:set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " =============================================================
 "                       KEYMAP SETTINGS
 " =============================================================
@@ -44,14 +43,32 @@ au VimEnter * NERDTree
 :map <F2> :echo 'Current time is [' . strftime('%c').']'<CR>
 :map <F3> :TagbarToggle <CR>
 :map <F4> :NERDTreeToggle <CR>
-"Remove the highlight when the research is done.
+" Remove the highlight when the research is done.
 nnoremap <leader><space> :nohlsearch<CR> 
 
-"Tagbar config
+" Tagbar config
 let g:tagbar_usearrows = 1
+
+" Desactivate directionals key
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" ; are rarely use twice
+:imap ;; <Esc>
+:map ;; <Esc>
+" ============================================================
+"			AUTOCOMPLETE SETTINGS
+" ============================================================
+
 nnoremap <leader>l ::TagbarToggle<CR>
 
-"Change the color theme
+" Change the color theme
 let g:lightline = {'colorscheme':'one'}
 
 
@@ -59,26 +76,51 @@ let g:lightline = {'colorscheme':'one'}
 "			GENERAL SETTINGS
 " =============================================================
 
-set nowrap 
 set encoding=utf8
 set autoindent  
-set hlsearch
-set incsearch 
 set lazyredraw 
 set mouse=a 
-set number      
-set ruler       
 set smartindent 
 set softtabstop=4 
 set tabstop=4 
-set wildmenu 
+set backspace=indent,eol,start
+set hidden		" Hide files when you open others files
+set antialias
 syntax on
+set guifont=Zekton:h13
+filetype on
+filetype plugin on
+filetype indent on
+" =============================================================
+"			Display
+" =============================================================
+set title		" Update terminal/window title
+set number		" Show the number of lines
+set ruler		" Show the cursor position
+set wrap		" Wrap lines to long on multiples lines
+set wildmenu 
+
+" =============================================================
+"			Search
+" =============================================================
+
+set ignorecase	" Ignore case during the search
+set smartcase	" active case if search with case
+set incsearch	" Underline results while you writing
+set hlsearch	" Underline results after a search
+
+
+" =============================================================
+"			Beep
+" =============================================================
+
+set visualbell		" Vim never beep
+set noerrorbells	" Vim never beep
+
 " ===============================================================
-"			PLUGIN CONFIG
+"			SYNTASTIC
 " ===============================================================
-"  --------------------------------------------------------------------------------------------------------------------------
-"			Syntastic
-"  --------------------------------------------------------------------------------------------------------------------------
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -89,15 +131,15 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
-"  ---------------------------------------------------------------------------------------------------------------------------
+" ================================================================
 "			NERDCOMMENTER
-"  ---------------------------------------------------------------------------------------------------------------------------
+" ================================================================
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-" " Use compact syntax for prettified multi-line comments
+" " Use compact syntax for prettified multi=line comments
 let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
+" Align line=wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
 
 " Set a language to use its alternate delimiters by default
