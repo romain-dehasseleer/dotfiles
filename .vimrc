@@ -15,11 +15,18 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
-Plugin 'sheerun/vim-polyglot'
+"Plugin 'sheerun/vim-polyglot'
 Plugin 'othree/html5.vim'
 Plugin 'webastien/vim-ctags'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'godlygeek/tabular'
+Plugin 'vim-scripts/ReplaceWithRegister'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'christoomey/vim-titlecase'
+Plugin 'christoomey/vim-sort-motion'
+Plugin 'christoomey/vim-system-copy'
 call vundle#end()  
 " =============================================================
 "                       PATHOGEN
@@ -27,6 +34,11 @@ call vundle#end()
 
 filetype plugin indent on
 execute pathogen#infect()
+" =============================================================
+" Disable latex-box because there is a conflict with vimtex
+let g:polyglot_disabled = ['latex']
+let g:titlecase_map_keys = 0
+" =============================================================
 
 " =============================================================
 "                       STARTUP SCRIPT
@@ -58,7 +70,9 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
-
+nmap <leader>gt <Plug>Titlecase
+vmap <leader>gt <Plug>Titlecase
+nmap <leader>gT <Plug>TitlecaseLine
 " ; are rarely use twice
 :imap ;; <Esc>
 :map ;; <Esc>
@@ -86,11 +100,13 @@ set tabstop=4
 set backspace=indent,eol,start
 set hidden		" Hide files when you open others files
 set antialias
+set relativenumber
 syntax on
 set guifont=Zekton:h13
 filetype on
 filetype plugin on
 filetype indent on
+
 " =============================================================
 "			Display
 " =============================================================
