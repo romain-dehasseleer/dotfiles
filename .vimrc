@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'kien/tabman.vim'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'lervag/vimtex'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
