@@ -6,20 +6,18 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'itchyny/lightline.vim'
 Plugin 'kien/tabman.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'lervag/vimtex'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'sheerun/vim-polyglot'
 Plugin 'othree/html5.vim'
 Plugin 'webastien/vim-ctags'
-"Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
@@ -28,17 +26,14 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'christoomey/vim-titlecase'
 Plugin 'christoomey/vim-sort-motion'
 Plugin 'christoomey/vim-system-copy'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'aserebryakov/vim-todo-lists'
 call vundle#end()  
-" =============================================================
-"                       PATHOGEN
-" =============================================================
-
-filetype plugin indent on
-execute pathogen#infect()
 " =============================================================
 " Disable latex-box because there is a conflict with vimtex
 let g:polyglot_disabled = ['latex']
 let g:titlecase_map_keys = 0
+let g:jedi#force_py_version = 3
 " =============================================================
 
 " =============================================================
@@ -55,9 +50,10 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 :map <F1> :TMToggle <CR>
 :map <F2> :echo 'Current time is [' . strftime('%c').']'<CR>
 :map <F3> :TagbarToggle <CR>
-:map <F4> :NERDTreeToggle <CR>
+map <F4> :NERDTreeToggle<CR>
+
 " Remove the highlight when the research is done.
-nnoremap <leader><space> :nohlsearch<CR> 
+nnoremap <leader><space> :nohlsearch<CR>
 
 " Tagbar config
 let g:tagbar_usearrows = 1
@@ -78,7 +74,7 @@ nmap <leader>gT <Plug>TitlecaseLine
 :imap ;; <Esc>
 :map ;; <Esc>
 " ============================================================
-"			AUTOCOMPLETE SETTINGS
+" AUTOCOMPLETE SETTINGS
 " ============================================================
 
 nnoremap <leader>l ::TagbarToggle<CR>
@@ -86,56 +82,54 @@ nnoremap <leader>l ::TagbarToggle<CR>
 " Change the color theme
 let g:lightline = {'colorscheme':'one'}
 
-
 " =============================================================
-"			GENERAL SETTINGS
+" GENERAL SETTINGS
 " =============================================================
-
+colorscheme one
 set encoding=utf8
 set autoindent  
-set lazyredraw 
-set mouse=a 
-set smartindent 
-set softtabstop=4 
-set tabstop=4 
+set lazyredraw
+set mouse=a
+set smartindent
+set softtabstop=4
+set tabstop=4
 set backspace=indent,eol,start
-set hidden		" Hide files when you open others files
+set hidden " Hide files when you open others files
 set antialias
 set relativenumber
 syntax on
-set guifont=Zekton:h13
 filetype on
 filetype plugin on
 filetype indent on
 
 " =============================================================
-"			Display
+" Display
 " =============================================================
-set title		" Update terminal/window title
-set number		" Show the number of lines
-set ruler		" Show the cursor position
-set wrap		" Wrap lines to long on multiples lines
-set wildmenu 
+set title " Update terminal/window title
+set number " Show the number of lines
+set ruler " Show the cursor position
+set wrap " Wrap lines to long on multiples lines
+set wildmenu
 
 " =============================================================
-"			Search
+" Search
 " =============================================================
 
-set ignorecase	" Ignore case during the search
-set smartcase	" active case if search with case
-set incsearch	" Underline results while you writing
-set hlsearch	" Underline results after a search
+set ignorecase " Ignore case during the search
+set smartcase " active case if search with case
+set incsearch " Underline results while you writing
+set hlsearch " Underline results after a search
 
 
 " =============================================================
-"			Beep
+" Beep
 " =============================================================
 
-set visualbell		" Vim never beep
-set noerrorbells	" Vim never beep
+set visualbell " Vim never beep
+set noerrorbells " Vim never beep
 
 " ===============================================================
-"			SYNTASTIC
+" SYNTASTIC
 " ===============================================================
 
 set statusline+=%#warningmsg#
@@ -149,7 +143,7 @@ let g:syntastic_check_on_wq = 0
 
 
 " ================================================================
-"			NERDCOMMENTER
+" NERDCOMMENTER
 " ================================================================
 
 " Add spaces after comment delimiters by default
